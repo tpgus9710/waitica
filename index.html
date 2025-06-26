@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAITICA</title>
+  <link rel="stylesheet" href="dss.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Bebas+Neue&family=Alfa+Slab+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-nav">
+      <a href="#" class="logo-link"><img src="image/logo1.jpg" alt="WAITICA Logo" class="logo"></a>
+      <nav class="nav">
+        <ul>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li class="nav-product">
+            <a href="#Product">Product <span class="dropdown-arrow">&#8964;</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#Ring">Ring</a></li>
+              <li><a href="#Necklace">Necklace</a></li>
+              <li><a href="#Pendant">Pendant</a></li>
+            </ul>
+          </li>
+          <li><a href="#Contact">Contact</a></li>
+          <li class="nav-community">
+            <a href="#Community">Community <span class="dropdown-arrow">&#8964;</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#Notice">Notice</a></li>
+              <li><a href="#QnA">QnA</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <a href="login.html" class="nav-login">Login</a>
+    </div>
+  </header>
+  <main>
+    <section class="main-banner">
+      <h1>미국 서부의 감성을 담은 WAITICA</h1>
+      <p>자유, 빈티지, 그리고 세련됨을 경험하세요.</p>
+    </section>
+    <section class="product-section" id="product">
+      <div class="image-slider">
+        <button class="slider-btn left" aria-label="이전 이미지">&#8592;</button>
+        <div class="slider-images">
+          <img src="image/ex1.jpg" alt="예시 이미지 1" class="slider-image active">
+          <img src="image/ex2.jpg" alt="예시 이미지 2" class="slider-image">
+          <img src="image/ex3.jpg" alt="예시 이미지 3" class="slider-image">
+          <img src="image/ex4.jpg" alt="예시 이미지 4" class="slider-image">
+        </div>
+        <button class="slider-btn right" aria-label="다음 이미지">&#8594;</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div>© 2025 WAITICA. All rights reserved.</div>
+    <div>Owner : 김상욱 | adress : 부산광역시 수영구 광안동 1039-26 | phone : 010-0000-0000 | Email : info@waitica.com</div> 
+    <div>COMPANY REG.NO : 000-00-00000 | </div>
+    
+  </footer>
+  <script>
+  // 딱딱하게 한 장씩만 보이는 슬라이더
+  const images = document.querySelectorAll('.slider-image');
+  const leftBtn = document.querySelector('.slider-btn.left');
+  const rightBtn = document.querySelector('.slider-btn.right');
+  let current = 0;
+  function showImage(idx) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === idx);
+    });
+  }
+  leftBtn.addEventListener('click', () => {
+    current = (current - 1 + images.length) % images.length;
+    showImage(current);
+  });
+  rightBtn.addEventListener('click', () => {
+    current = (current + 1) % images.length;
+    showImage(current);
+  });
+  // 터치 슬라이드(모바일)
+  let startX = 0;
+  document.querySelector('.slider-images').addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+  document.querySelector('.slider-images').addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (dx > 40) leftBtn.click();
+    if (dx < -40) rightBtn.click();
+  });
+  showImage(current);
+  </script>
+</body>
+</html> 
