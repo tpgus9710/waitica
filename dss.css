@@ -382,3 +382,47 @@ body {
   font-family: Arial, sans-serif;
   font-weight: normal;
 }
+@media (max-width: 700px) {
+  .logo-nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 4px;
+    align-items: center;
+  }
+  .nav ul {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav a {
+    font-size: 1rem;
+    padding: 8px 0;
+  }
+  .dropdown-menu {
+    position: static;
+    flex-direction: column;
+    left: 0;
+    top: auto;
+    transform: none;
+    min-width: 100px;
+    box-shadow: none;
+    background: #fcfeff;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .dropdown-menu li,
+  .dropdown-menu a {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+  }
+  .dropdown-arrow {
+    font-size: 1.1em;
+    vertical-align: 0;
+    margin-left: 4px;
+  }
+}
